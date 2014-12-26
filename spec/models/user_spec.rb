@@ -36,4 +36,19 @@ RSpec.describe User, :type => :model do
 
   end
 
+
+  describe "associations" do
+    
+    it "has many articles" do
+      user = create :user
+      3.times { user.articles.create attributes_for :article }
+      expect( user.articles.count ).to eq 3
+    end
+
+    it "can post an article"
+
+    it "can post a comment in an article"
+
+  end
+
 end

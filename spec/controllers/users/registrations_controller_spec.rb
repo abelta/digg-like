@@ -47,9 +47,9 @@ describe Users::RegistrationsController do
 
       it "reloads sign up page" do
         attributes = attributes_for :user, name: nil
-          post :create, user: attributes
-          # FAILS
-          expect(response).to render_template :new
+        post :create, user: attributes
+        # FAILS
+        expect(response).to render_template :new
       end
 
     end
