@@ -30,39 +30,9 @@ class Article
     before_save :update_uploader
 
 
-
-=begin
-    def initialize (user, attrs = nil, options = nil)
-      puts "INITIALIZE"
-      super attrs #, options
-      self.uploader_id = user.id
-      update_uploader
-    end
-=end
-
-=begin
-    def create (user, attrs = nil, options = nil)
-      puts "CREATE"
-      super attrs #, options
-      self.uploader_id = user.id
-      update_uploader
-    end
-=end
-
     def uploader
       User.where(:id => self.uploader_id).first
     end
-
-=begin
-    def uploader=(uploader)
-      update_attribute :uploader_id, uploader.id
-      update_attribute :uploader_name, uploader.name
-      #self.uploader_id = uploader.id
-      #self.uploader_name = uploader.name
-      #update_uploader
-      save unless new_record?
-    end
-=end
 
     def domain
       require 'uri'

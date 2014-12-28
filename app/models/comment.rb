@@ -13,8 +13,9 @@ class Comment
 
 
     validates_presence_of :user_id
-    #validates_presence_of :user_name
     validates_presence_of :content
+    #validates_presence_of :user_name
+
 
     attr_readonly :user_id
     attr_readonly :user_name
@@ -22,13 +23,6 @@ class Comment
     before_save :update_user
 
 
-=begin
-    def initialize (user, attrs = nil, options = nil)
-      super attrs #, options
-      self.user_id = user.id
-      initialize_user
-    end
-=end
 
     def user
       User.where(:id => self.user_id).first
