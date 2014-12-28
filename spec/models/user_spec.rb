@@ -41,7 +41,7 @@ RSpec.describe User, :type => :model do
     
     it "has many articles" do
       user = create :user
-      3.times { user.articles.create attributes_for :article }
+      3.times { user.article_create attributes_for(:article) }
       expect( user.articles.count ).to eq 3
     end
 
