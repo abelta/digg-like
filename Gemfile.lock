@@ -207,6 +207,7 @@ DEPENDENCIES
   launchy
   mongoid (~> 4.0.0)
   mongoid-rspec (~> 2.0.0.rc1)
+  nokogiri
   rails (= 4.1.1)
   rspec-rails
   sass-rails (~> 4.0.3)

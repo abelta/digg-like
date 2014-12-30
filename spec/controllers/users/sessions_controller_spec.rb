@@ -1,14 +1,11 @@
 require 'rails_helper'
 
 
-describe Users::SessionsController do
+describe Users::SessionsController, :type => :controller do
 
-
-  before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
-  end
 
   before :each do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
     sign_out :user
   end
 

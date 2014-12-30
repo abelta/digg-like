@@ -15,6 +15,13 @@ RSpec.describe Article, :type => :model do
       expect( article.errors[:url].size ).to be >= 1
     end
 
+    it "is not valid with a non unique url" do
+      article1 = create :article, url: 'http://url.com'
+      article2 = build :article, url: 'http://url.com'
+      article2.valid?
+      expect( article2.errors[:url].size ).to be >= 1
+    end
+
     it "is not valid without a title" do
       article = build :article, title: nil
       article.valid?
@@ -27,7 +34,7 @@ RSpec.describe Article, :type => :model do
       expect( article.errors[:url].size ).to be >= 1
     end
 
-    it "is not valid without a content" do
+    xit "is not valid without a content" do
       article = build :article, content: nil
       article.valid?
       expect( article.errors[:content].size ).to be >= 1

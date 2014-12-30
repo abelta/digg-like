@@ -10,7 +10,7 @@ class Article
     field :url, type: String
     field :title, type: String
     field :excerpt, type: String
-    field :content, type: String
+    #field :content, type: String
     field :uploader_id, type: Integer
     field :uploader_name, type: String
 
@@ -20,14 +20,18 @@ class Article
 
 
     validates_presence_of :url
+    validates_uniqueness_of :url
     validates_presence_of :title
     validates_presence_of :excerpt
-    validates_presence_of :content
+    #validates_presence_of :content
     validates_presence_of :uploader_id
     #validates_presence_of :uploader_name
 
 
     before_save :update_uploader
+
+    index({url: 1}, {unique: true})
+
 
 
     def uploader
