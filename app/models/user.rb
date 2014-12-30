@@ -8,17 +8,17 @@ class User < ActiveRecord::Base
 
 
   def articles
-    Article.where uploader_id: self.id
+    Article.where user_id: self.id
   end
 
 
   def article_new (attrs)
-    Article.new attrs.merge(uploader_id: self.id)
+    Article.new attrs.merge(user_id: self.id)
   end
 
 
   def article_create (attrs)
-    Article.create attrs.merge(uploader_id: self.id)
+    Article.create attrs.merge(user_id: self.id)
   end
 
 

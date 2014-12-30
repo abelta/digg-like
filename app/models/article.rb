@@ -11,12 +11,12 @@ class Article
     field :title, type: String
     field :excerpt, type: String
     #field :content, type: String
-    field :uploader_id, type: Integer
-    field :uploader_name, type: String
+    field :user_id, type: Integer
+    field :user_name, type: String
 
 
-    attr_readonly :uploader_id
-    attr_readonly :uploader_name
+    attr_readonly :user_id
+    attr_readonly :user_name
 
 
     validates_presence_of :url
@@ -24,18 +24,18 @@ class Article
     validates_presence_of :title
     validates_presence_of :excerpt
     #validates_presence_of :content
-    validates_presence_of :uploader_id
-    #validates_presence_of :uploader_name
+    validates_presence_of :user_id
+    #validates_presence_of :user_name
 
 
-    before_save :update_uploader
+    before_save :update_user
 
     index({url: 1}, {unique: true})
 
 
 
-    def uploader
-      User.where(:id => self.uploader_id).first
+    def user
+      User.where(:id => self.user_id).first
     end
 
     def domain
@@ -48,9 +48,9 @@ class Article
     protected
 
 
-    def update_uploader
-      user = User.find self.uploader_id
-      self.uploader_name = user.name
+    def update_user
+      user = User.find self.user_id
+      self.user_name = user.name
       user
     end
 

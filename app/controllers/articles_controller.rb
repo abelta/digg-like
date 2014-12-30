@@ -25,8 +25,8 @@ class ArticlesController < ApplicationController
       article.url = article_params[:url]
       article.title = webpage.title
       article.excerpt = webpage.css('p').text.split.first(100).join(' ')
-      article.uploader_id = current_user.id
-      article.uploader_name = current_user.name
+      article.user_id = current_user.id
+      article.user_name = current_user.name
     end
     
     respond_to do |format|

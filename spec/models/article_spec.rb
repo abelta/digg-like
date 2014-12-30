@@ -40,17 +40,17 @@ RSpec.describe Article, :type => :model do
       expect( article.errors[:content].size ).to be >= 1
     end
 
-    it "is not valid without a uploader_id" do
-      article = build :article, uploader_id: nil
+    it "is not valid without a user_id" do
+      article = build :article, user_id: nil
       article.valid?
-      expect( article.errors[:uploader_id].size ).to be >= 1
+      expect( article.errors[:user_id].size ).to be >= 1
     end
 
 
-    xit "is not valid without a uploader_name" do
-      article = build :article, uploader_name: nil
+    xit "is not valid without a user_name" do
+      article = build :article, user_name: nil
       article.valid?
-      expect( article.errors[:uploader_name].size ).to be >= 1
+      expect( article.errors[:user_name].size ).to be >= 1
     end
 
 
@@ -66,23 +66,23 @@ RSpec.describe Article, :type => :model do
 
     xit "has a user name that matches that of the one who uploaded it" do
       article = build :article
-      uploader = User.find article.uploader_id
-      expect( article.uploader_name ).to eq uploader.name
+      user = User.find article.user_id
+      expect( article.user_name ).to eq user.name
     end
 
   end
 
 
-  context "uploader" do
+  context "user" do
     
     it "returns the user who uploaded the article" do
       article = create :article
-      expect( article.uploader ).to be_a User
+      expect( article.user ).to be_a User
     end
 
-    it "only allows read of uploader_id" do
+    it "only allows read of user_id" do
       article = create :article
-      expect { article.update_attribute :uploader_id, '1' }.to raise_error
+      expect { article.update_attribute :user_id, '1' }.to raise_error
     end
 
   end
@@ -98,24 +98,24 @@ RSpec.describe Article, :type => :model do
   end
 
 
-  context "uploader_name" do
+  context "user_name" do
 
     it "can not be changed directly" do
       article = create :article
-      expect { article.update_attribute :uploader_name, 'random_name' }.to raise_error
+      expect { article.update_attribute :user_name, 'random_name' }.to raise_error
     end
 
     it "is set when the article is created from its user" do
       article = create :article
-      user = article.uploader
-      expect( article.uploader_name ).to eql user.name
+      user = article.user
+      expect( article.user_name ).to eql user.name
     end
 
-    xit "is updated when the uploader is updated" do
+    xit "is updated when the user is updated" do
       article = build :article
       user = create :user
-      article.uploader = user
-      expect( article.uploader_name ).to eql user.name
+      article.user = user
+      expect( article.user_name ).to eql user.name
     end
 
   end
