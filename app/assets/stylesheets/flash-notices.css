@@ -1,0 +1,7 @@
+.flash-notices {
+    padding: 10px;
+}
+
+.flash-notices .alert {
+    color: brown;
+}

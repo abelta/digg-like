@@ -1,0 +1,20 @@
+.header {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.label-body {
+    font-weight: 600 !important;
+}
+
+.form-container {
+  max-width: 600px !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
