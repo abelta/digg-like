@@ -13,22 +13,28 @@ class User < ActiveRecord::Base
 
 
   def article_new (attrs)
-    Article.new attrs.merge(user_id: self.id)
+    Article.new attrs.merge(user_id: self.id, user_name: self.name)
   end
 
 
   def article_create (attrs)
-    Article.create attrs.merge(user_id: self.id)
+    Article.create attrs.merge(user_id: self.id, user_name: self.name)
   end
 
 
   def comment_new (article, attrs)
-    article.comments.new attrs.merge(user_id: self.id)
+    puts "article"
+    puts article.inspect
+    puts "attrs"
+    puts attrs.inspect
+    sleep 4
+
+    article.comments.new attrs.merge(user_id: self.id, user_name: self.name)
   end
 
 
   def comment_create (article, attrs)
-    article.comments.create attrs.merge(user_id: self.id)
+    article.comments.create attrs.merge(user_id: self.id, user_name: self.name)
   end
 
 end
