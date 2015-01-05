@@ -2,33 +2,39 @@
 <html>
 <head>
   <title>DiggLike</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>  
   <%= csrf_meta_tags %>
 </head>
+
+
 <body>
 
-<% if notice or alert %>
-  <div class="flash-notices">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
-<% end %>
-
-
-<nav>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-    </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>  
-    </li>
+  <% if notice or alert %>
+    <div class="flash-notices">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
   <% end %>
-</nav>
 
-<%= yield %>
+  <div class="user-bar">
+    <% if user_signed_in? %>
+      
+      <span>Loged in as <%= current_user.name -%></span>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+      <%= link_to 'Refer article', new_article_path %>
+    <% else %>
+      
+      <%= link_to('Login', new_user_session_path)  %>  
+      
+    <% end %>
+  </div>
 
+
+
+  <%= yield %>
+
+
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

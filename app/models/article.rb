@@ -22,7 +22,7 @@ class Article
     validates_presence_of :url
     validates_uniqueness_of :url
     validates_presence_of :title
-    validates_presence_of :excerpt
+    #validates_presence_of :excerpt
     #validates_presence_of :content
     validates_presence_of :user_id
     #validates_presence_of :user_name

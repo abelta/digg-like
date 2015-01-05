@@ -1,0 +1,14 @@
+.user-bar {
+    width: 100%;
+    position: relative;
+    background-color: #1EAEDB;
+    color: white;
+    padding: 4px;
+    margin-bottom: 20px;
+
+    * {
+        margin-left: 10px;
+        margin-right: 10px;
+        color: white !important;
+    }
+}

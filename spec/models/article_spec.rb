@@ -28,7 +28,7 @@ RSpec.describe Article, :type => :model do
       expect( article.errors[:title].size ).to be >= 1
     end
 
-    it "is not valid without a excerpt" do
+    xit "is not valid without a excerpt" do
       article = build :article, url: nil
       article.valid?
       expect( article.errors[:url].size ).to be >= 1

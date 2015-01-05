@@ -71,7 +71,8 @@ RSpec.describe ArticlesController, :type => :controller do
 
       it "redirects to show action" do
         post :create, article: attributes_for(:article_with_known_url)
-        expect( response ).to render_template :show
+        article = Article.last
+        expect( response ).to redirect_to article
       end
     end
     
