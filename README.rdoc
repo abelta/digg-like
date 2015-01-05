@@ -1,28 +1,18 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== WORK IN PROGRESS
 
-Things you may want to cover:
+Example web application inspired by Digg where a user can create an account, refer to articles online and read what others are posting as well as commenting.
 
-* Ruby version
+Displays the use of:
 
-* System dependencies
+* Ember and jQuery for the front-end
 
-* Configuration
+* Skeleton CSS framework
 
-* Database creation
+* RSpec for tests
 
-* Database initialization
+* Devise for user and sessions management
 
-* How to run the test suite
+* SQL and Mongo databases interacting one with another
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Nokogiri for web scrapping
