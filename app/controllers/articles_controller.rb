@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
 
   
   def show
-    #@article = Article.find article_params[:id]
     @article = Article.find params[:id]
   end
 
@@ -32,7 +31,6 @@ class ArticlesController < ApplicationController
     
     respond_to do |format|
       format.html { redirect_to @article }
-      #format.html { render :show, id:@article }
       # format.json { render json: @article }
     end
   end
