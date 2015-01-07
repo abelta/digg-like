@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
+gem 'mechanize'
 gem 'nokogiri'
 
 # Use ActiveModel has_secure_password

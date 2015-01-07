@@ -2,22 +2,30 @@
 class ArticleReferrer
 
     constructor: (@dom) ->
-        console.log 'ArticleReferrer', @dom
         jQuery(@dom).on 'submit', (event) =>
             event.preventDefault()
-            do @sub
-            
+            do @submitForm
 
 
-    sub: ->
-        console.log '@sub'
+    submitForm: ->
+        
+        handleError = (error) =>
+            console.log 'handleError', error
+            formErrorsMarker = new FormErrorsMarker(@dom)
+            formErrorsMarker.markAll JSON.parse(error.responseText)
+
+
+        handleSuccess = (data) ->
+            console.log 'handleSuccess', data
+            window.location = "/articles/#{data.id}"
+
         action = jQuery(@dom).attr 'action'
         params = jQuery(@dom).serialize()
-        console.log 'params', params
+        
         jQuery
-            .post(action, params)
-            .done(-> console.log 'DONE')
-            .fail((e, f, g) -> console.log 'FAIL'; console.log 'e', e, console.log 'f', f; console.log 'g', g)
+            .post("#{action}.json", params)
+            .done( handleSuccess )
+            .fail( handleError )
 
 
 

@@ -16,12 +16,14 @@ class ArticlesController < ApplicationController
 
 
   def create
+    require 'mechanize'
     require 'nokogiri'
-    require 'open-uri'
+
     
-    webpage = Nokogiri::HTML( open article_params[:url] )
+    agent = Mechanize.new
+    webpage = Nokogiri::HTML( agent.get(article_params[:url]).content )
     
-    @article = Article.create! do |article|
+    @article = Article.new do |article|
       article.url = article_params[:url]
       article.title = webpage.title
       article.excerpt = webpage.css('p').text.split.first(100).join(' ')
@@ -30,8 +32,15 @@ class ArticlesController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { redirect_to @article }
-      # format.json { render json: @article }
+      if @article.save
+        format.html { redirect_to @article }
+        #format.json { render json: @article, status: :created }
+        format.json { render :show, status: :created }
+      else
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
+      
     end
   end
 
