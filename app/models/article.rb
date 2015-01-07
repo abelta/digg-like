@@ -2,6 +2,7 @@ class Article
 
     include Mongoid::Document
     include Mongoid::Timestamps
+    include Mongoid::Slug
 
 
     embeds_many :comments
@@ -13,6 +14,7 @@ class Article
     #field :content, type: String
     field :user_id, type: Integer
     field :user_name, type: String
+    slug :title
 
 
     attr_readonly :user_id
@@ -26,6 +28,7 @@ class Article
     #validates_presence_of :content
     validates_presence_of :user_id
     #validates_presence_of :user_name
+
 
 
     before_save :update_user

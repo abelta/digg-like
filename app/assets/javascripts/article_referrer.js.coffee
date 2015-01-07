@@ -10,14 +10,12 @@ class ArticleReferrer
     submitForm: ->
         
         handleError = (error) =>
-            console.log 'handleError', error
             formErrorsMarker = new FormErrorsMarker(@dom)
             formErrorsMarker.markAll JSON.parse(error.responseText)
 
 
         handleSuccess = (data) ->
-            console.log 'handleSuccess', data
-            window.location = "/articles/#{data.id}"
+            window.location = "/articles/#{data.slug}"
 
         action = jQuery(@dom).attr 'action'
         params = jQuery(@dom).serialize()
