@@ -1,0 +1,18 @@
+<script type="text/x-handlebars" data-template-name="articles">
+
+  <section id="todoapp">
+    <ul id="article-list">
+      {{#each article in model}}
+        <li>
+          <input type="checkbox" class="toggle">
+          <label>{{article.title}}</label><button class="destroy"></button>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+
+  <footer id="info">
+    <p>Double-click to edit a todo</p>
+  </footer>
+
+</script>

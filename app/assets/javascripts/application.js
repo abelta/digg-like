@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 //= require turbolinks
+
+//= require handlebars-v1.3.0
+//= require ember
+//= require ember-data
+
 //= require_tree .
