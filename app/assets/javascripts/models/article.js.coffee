@@ -4,7 +4,7 @@ ArticlesFeed.Article = DS.Model.extend
     url: DS.attr('string')
     slug: DS.attr('string')
     excerpt: DS.attr('string')
-    userId: DS.attr('integer')
+    userId: DS.attr('string')
     userName: DS.attr('string')
 
     comments: DS.hasMany('comment', {async: true})

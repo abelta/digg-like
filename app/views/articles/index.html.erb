@@ -1,16 +1,15 @@
 <script type="text/x-handlebars" data-template-name="articles">
 
-    
-  
-
     <div class="container">
     {{#each article in model}}
-      <div class="row">  
-        <article class="article">
-          <span class="title">{{article.title}}</span>
-          <div class="excerpt">{{article.excerpt}}</div>
-        </article>
-      </div>
+      
+      <article class="row article">
+        <span class="title">{{article.title}}</span>
+        <span class="uploader">{{article.userName}}</span>
+        <span class="domain">{{article.url}}</span>
+        <div class="excerpt">{{article.excerpt}}</div>
+      </article>
+      
     {{/each}}
     </div>
 
