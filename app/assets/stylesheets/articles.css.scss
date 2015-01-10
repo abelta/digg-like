@@ -1,3 +1,16 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.article {
+
+    width: 100%;
+    padding: 10px;
+
+    .title {
+        font-weight: bold;
+    }
+
+}
+
+.articles-list {
+
+    list-style: none;
+    
+}
