@@ -1,13 +1,23 @@
 <script type="text/x-handlebars" data-template-name="articles">
 
+    <header class="header">
+      <h1>Hot on Digg-like</h1>
+    </header>
+
     <div class="container">
     {{#each article in model}}
       
       <article class="row article">
-        <span class="title">{{article.title}}</span>
-        <span class="uploader">{{article.userName}}</span>
-        <span class="domain">{{domain article.url}}</span>
-        <div class="excerpt">{{article.excerpt}}</div>
+        <div class="three columns">
+          <div class="vote_box">
+          </div>
+        </div>
+        <div class="nine columns">
+          <span class="title">{{article.title}}</span>
+          <span class="uploader">{{article.userName}}</span>
+          <span class="domain">{{domain article.url}}</span>
+          <div class="excerpt">{{article.excerpt}}</div>
+        </div>
       </article>
       
     {{/each}}
