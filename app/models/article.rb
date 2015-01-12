@@ -3,9 +3,8 @@ class Article
     include Mongoid::Document
     include Mongoid::Timestamps
     include Mongoid::Slug
+    include Mongo::Voteable
 
-
-    embeds_many :comments
 
 
     field :url, type: String
@@ -32,6 +31,10 @@ class Article
 
 
     before_save :update_user
+
+    embeds_many :comments
+
+    voteable self, :up => +1, :down => -1
 
     index({url: 1}, {unique: true})
 

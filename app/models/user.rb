@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
-  
+  #include Mongo::Voter
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   validates :name, :presence => true
@@ -23,12 +24,6 @@ class User < ActiveRecord::Base
 
 
   def comment_new (article, attrs)
-    puts "article"
-    puts article.inspect
-    puts "attrs"
-    puts attrs.inspect
-    sleep 4
-
     article.comments.new attrs.merge(user_id: self.id, user_name: self.name)
   end
 

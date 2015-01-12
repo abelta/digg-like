@@ -37,6 +37,7 @@ RSpec.describe User, :type => :model do
   end
 
 
+
   describe "associations with articles" do
     
     it "has many articles" do
@@ -63,6 +64,23 @@ RSpec.describe User, :type => :model do
       end
 
     end
+
+  end
+
+
+
+  describe "voting" do
+
+    it "can upvote an article" do
+      user = create :user
+      article = create :article
+      expect {
+        #user.vote article
+        article.vote voter: user
+      }.to change { article.votes.count }.by(1)
+    end
+
+    it "can downvote an article"
 
   end
 
