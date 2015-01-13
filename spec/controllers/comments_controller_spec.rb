@@ -105,7 +105,7 @@ RSpec.describe CommentsController, :type => :controller do
         article = create :article
         user = create :user
         sign_in user
-        comment = user.comment_create article, attributes_for(:comment)
+        comment = article.comments.create attributes_for(:comment).merge(user_id:user.id)
         expect {
           delete :destroy, article_id: article.id, id: comment.id, format: 'json'
         }.to change { article.reload.comments.count }.by -1

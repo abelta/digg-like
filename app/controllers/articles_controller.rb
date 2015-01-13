@@ -33,13 +33,12 @@ class ArticlesController < ApplicationController
       article.title = webpage.title
       article.excerpt = webpage.css('p').text.split.first(100).join(' ')
       article.user_id = current_user.id
-      article.user_name = current_user.name
+      #article.user_name = current_user.name
     end
     
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article }
-        #format.json { render json: @article, status: :created }
         format.json { render :show, status: :created }
       else
         format.html { render :new }

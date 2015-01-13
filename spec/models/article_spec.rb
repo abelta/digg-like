@@ -28,46 +28,10 @@ RSpec.describe Article, :type => :model do
       expect( article.errors[:title].size ).to be >= 1
     end
 
-    xit "is not valid without a excerpt" do
+    it "is not valid without a excerpt" do
       article = build :article, url: nil
       article.valid?
       expect( article.errors[:url].size ).to be >= 1
-    end
-
-    xit "is not valid without a content" do
-      article = build :article, content: nil
-      article.valid?
-      expect( article.errors[:content].size ).to be >= 1
-    end
-
-    it "is not valid without a user_id" do
-      article = build :article, user_id: nil
-      article.valid?
-      expect( article.errors[:user_id].size ).to be >= 1
-    end
-
-
-    xit "is not valid without a user_name" do
-      article = build :article, user_name: nil
-      article.valid?
-      expect( article.errors[:user_name].size ).to be >= 1
-    end
-
-
-  end
-  
-
-
-  context "initialize" do
-     
-    xit "can't be initialized without a user" do
-      expect { new Article }.to raise_error
-    end
-
-    xit "has a user name that matches that of the one who uploaded it" do
-      article = build :article
-      user = User.find article.user_id
-      expect( article.user_name ).to eq user.name
     end
 
   end
@@ -76,13 +40,9 @@ RSpec.describe Article, :type => :model do
   context "user" do
     
     it "returns the user who uploaded the article" do
-      article = create :article
+      user = create :user
+      article = user.articles.create attributes_for :article
       expect( article.user ).to be_a User
-    end
-
-    it "only allows read of user_id" do
-      article = create :article
-      expect { article.update_attribute :user_id, '1' }.to raise_error
     end
 
   end
@@ -100,22 +60,24 @@ RSpec.describe Article, :type => :model do
 
   context "user_name" do
 
-    it "can not be changed directly" do
+    xit "can not be changed directly" do
       article = create :article
       expect { article.update_attribute :user_name, 'random_name' }.to raise_error
     end
 
-    it "is set when the article is created from its user" do
-      article = create :article
-      user = article.user
+    xit "is set when the article is created from its user" do
+      user = create :user
+      article = user.articles.create attributes_for :article
       expect( article.user_name ).to eql user.name
     end
 
     xit "is updated when the user is updated" do
-      article = build :article
-      user = create :user
-      article.user = user
-      expect( article.user_name ).to eql user.name
+      user1 = create :user
+      user2 = create :user
+      article = user1.articles.create attributes_for :article
+      article.set :user_id, user2.id
+      article.save
+      expect( article.user_name ).to eql user2.name
     end
 
   end

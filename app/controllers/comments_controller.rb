@@ -7,8 +7,8 @@ class CommentsController < ApplicationController
 
   def create
     @article = Article.find params[:article_id]
-    @comment = current_user.comment_create @article, comment_params
-
+    @comment = @article.comments.create comment_params.merge(user_id: current_user.id)
+    
     respond_to do |format|
       if @article.save!
         format.json { render json: @comment, status: 'success' }
