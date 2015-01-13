@@ -42,14 +42,14 @@ RSpec.describe User, :type => :model do
     
     it "has many articles" do
       user = create :user
-      3.times { user.article_create attributes_for(:article) }
+      3.times { user.articles.create attributes_for(:article) }
       expect( user.articles.count ).to eq 3
     end
 
     it "can post an article" do
       user = create :user
       expect {
-        user.article_create attributes_for(:article)
+        user.articles.create attributes_for(:article)
       }.to change { user.articles.count }.by(1)
     end
 
@@ -57,9 +57,9 @@ RSpec.describe User, :type => :model do
       
       it "can post a comment in an article" do
         user = create :user
-        article = create :article
+        article = user.articles.create attributes_for :article
         expect {
-          user.comment_create article, attributes_for(:comment)
+          user.articles.first.comments.create attributes_for(:comment)
         }.to change { article.comments.count }.by(1)
       end
 
@@ -71,16 +71,25 @@ RSpec.describe User, :type => :model do
 
   describe "voting" do
 
-    it "can upvote an article" do
-      user = create :user
-      article = create :article
-      expect {
-        #user.vote article
-        article.vote voter: user
-      }.to change { article.votes.count }.by(1)
+    before do
+      @user = create :user
+      @article = create :article
     end
 
-    it "can downvote an article"
+    it "can vote an article" do
+      @user.vote @article, :up
+      expect @user.voted?(@article)
+    end
+
+    it "can upvote an article" do
+      @user.vote @article, :up
+      expect @article.up_voters(User).include?(@user)
+    end
+
+    it "can downvote an article" do
+      @user.vote @article, :down
+      expect @article.down_voters(User).include?(@user)
+    end
 
   end
 

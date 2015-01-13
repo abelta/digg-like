@@ -31,7 +31,7 @@ gem 'devise'
 gem 'mongoid-slug'
 gem 'mechanize'
 gem 'nokogiri'
-gem 'voteable_mongo'
+gem 'rs_voteable_mongo'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

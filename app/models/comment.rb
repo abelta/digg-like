@@ -4,7 +4,7 @@ class Comment
     include Mongoid::Timestamps
 
 
-    embedded_in :article
+    
 
 
     field :user_id, type: Integer
@@ -20,10 +20,12 @@ class Comment
     attr_readonly :user_id
     attr_readonly :user_name
 
-    before_save :update_user
+    embedded_in :article
+
+    #before_save :update_user
 
 
-
+=begin
     def user
       User.where(:id => self.user_id).first
     end
@@ -35,9 +37,9 @@ class Comment
       update_user
       save unless new_record?
     end
+=end
 
-
-
+=begin
     protected
 
 
@@ -46,5 +48,6 @@ class Comment
       self.user_name = user.name
       user
     end
+=end
 
 end
