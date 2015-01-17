@@ -1,0 +1,18 @@
+.flash {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: yellow;
+    z-index: 100;
+    text-align: center;
+    font-weight: bold;
+    color: #575D70;
+
+    &.error {
+        background-color: pink;
+    }
+
+}

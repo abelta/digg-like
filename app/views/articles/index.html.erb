@@ -10,6 +10,12 @@
       <article class="row article">
         <div class="three columns">
           <div class="vote_box">
+          <span class="vote_count">{{article.voteCount}}</span>
+          {{#if article.userVoted}}
+            <a class="vote_button"{{action 'unvote' article}}>Unvote!</a>
+          {{else}}
+            <a class="vote_button"{{action 'vote' article}}>Vote!</a>
+          {{/if}}
           </div>
         </div>
         <div class="nine columns">

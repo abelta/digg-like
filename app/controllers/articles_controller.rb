@@ -43,8 +43,23 @@ class ArticlesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
+      end      
+    end
+  end
+
+
+  def update
+    @article = Article.find params[:id]
+    @article.update_attributes article_params
+
+    respond_to do |format|
+      if @article.save
+        format.html { redirect_to @article }
+        format.json { render :show, status: :ok }
+      else
+        format.html { render :edit }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
-      
     end
   end
 

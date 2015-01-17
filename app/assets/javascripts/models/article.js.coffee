@@ -7,6 +7,7 @@ ArticlesFeed.Article = DS.Model.extend
     userId: DS.attr('string')
     userName: DS.attr('string')
     userVoted: DS.attr('boolean')
+    voteCount: DS.attr('number')
 
     comments: DS.hasMany('comment', {async: true})
     

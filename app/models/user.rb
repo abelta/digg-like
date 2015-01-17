@@ -21,8 +21,6 @@ class User
 
 
   has_many :articles
-  #has_many :comments
-
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -30,7 +28,11 @@ class User
 
   index({email: 1}, {unique: true})
   index({reset_password_token: 1}, {unique: true})
+  
 
-
+  def self.serialize_from_session(key, salt)
+    record = to_adapter.get(key[0]["$oid"])
+    record if record && record.authenticatable_salt == salt
+  end
 
 end

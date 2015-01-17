@@ -11,9 +11,9 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @article.save!
-        format.json { render json: @comment, status: 'success' }
+        format.json { render json: @comment, status: :ok }
       else
-        format.json { render json: @comment.errors, status: 'error' }
+        format.json { render json: @comment.errors, status: :error }
       end
     end
   end
@@ -22,9 +22,9 @@ class CommentsController < ApplicationController
   def destroy
     respond_to do |format|
       if @comment.destroy
-        format.json { render json: @comment, status: 'success' }
+        format.json { render json: @comment, status: :ok }
       else
-        format.json { render json: @comment.errors, status: 'error' }
+        format.json { render json: @comment.errors, status: :error }
       end
     end
   end

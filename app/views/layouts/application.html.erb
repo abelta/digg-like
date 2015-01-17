@@ -9,10 +9,13 @@
 
 <body>
 
-  <% if notice or alert %>
+  <% unless flash.empty? %>
     <div class="flash-notices">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      
+      <% flash.each do |key, value| %>
+        <div class="<%= key %>"><%= value %></div>
+      <% end %>
+
     </div>
   <% end %>
 
