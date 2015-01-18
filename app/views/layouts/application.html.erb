@@ -9,16 +9,6 @@
 
 <body>
 
-  <% unless flash.empty? %>
-    <div class="flash-notices">
-      
-      <% flash.each do |key, value| %>
-        <div class="<%= key %>"><%= value %></div>
-      <% end %>
-
-    </div>
-  <% end %>
-
   <div class="user-bar">
     <% if user_signed_in? %>
       
@@ -31,6 +21,17 @@
       
     <% end %>
   </div>
+
+
+  <% unless flash.empty? %>
+    <div class="flash-notices">
+      
+      <% flash.each do |key, value| %>
+        <div class="<%= key %>"><%= value %></div>
+      <% end %>
+
+    </div>
+  <% end %>
 
 
 

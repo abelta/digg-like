@@ -11,11 +11,11 @@ class User
   field :encrypted_password, type: String
   field :reset_password_token, type: String
   field :reset_password_sent_at, type: String
-  field :remember_created_at, type: DateTime
+  field :remember_created_at, type: Time
   field :sign_in_count, type: String
-  field :sign_in_count, type: DateTime
-  field :current_sign_in_at, type: DateTime
-  field :last_sign_in_at, type: DateTime
+  field :sign_in_count, type: Time
+  field :current_sign_in_at, type: Time
+  field :last_sign_in_at, type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip, type: String
 
