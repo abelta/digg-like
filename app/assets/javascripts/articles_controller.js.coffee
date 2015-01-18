@@ -23,12 +23,10 @@ ArticlesFeed.ArticlesController = Ember.ObjectController.extend
     unvote: (article) ->
 
       handleSuccess = (data) ->
-        console.log 'handleSuccess'
         article.set 'voteCount', data.voteCount
         article.set 'userVoted', true
 
       handleError = ->
-        console.log 'handleError'
         new Flash "There's been an error.", 'error'
 
       jQuery

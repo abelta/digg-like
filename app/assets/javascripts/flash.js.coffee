@@ -10,5 +10,7 @@ class Flash
         jQuery(@dom).slideUp()
 
 
+
+
 # Export.
 window.Flash = Flash
