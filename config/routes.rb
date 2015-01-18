@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'articles#index'
 
+  get 'articles/sitemap' => 'articles#sitemap'
+  
   resources :articles do
     
     resources :comments
@@ -15,5 +17,7 @@ Rails.application.routes.draw do
     end
 
   end
+
+
 
 end

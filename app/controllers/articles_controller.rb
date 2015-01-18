@@ -64,6 +64,11 @@ class ArticlesController < ApplicationController
   end
 
 
+  def sitemap
+    @articles = Article.limit(50000).reverse
+  end
+
+
 
   protected
 

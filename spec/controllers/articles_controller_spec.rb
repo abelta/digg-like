@@ -80,4 +80,16 @@ RSpec.describe ArticlesController, :type => :controller do
   end
 
 
+
+  describe 'GET /articles/sitemap' do
+
+    it "shows the last articles" do
+      articles = 20.times.collect { create :article }
+      get :sitemap, format: 'xml'
+      expect( assigns ( :articles )). to match_array( articles.reverse )
+    end
+
+  end
+
+
 end
