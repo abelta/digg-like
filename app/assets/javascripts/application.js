@@ -19,4 +19,6 @@
 //= require ember
 //= require ember-data
 
+//= require moment
+
 //= require_tree .

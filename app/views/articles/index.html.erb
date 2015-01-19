@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="nine columns">
-          <span class="title">{{article.title}}</span>
+          {{#link-to 'article' article}}<span class="title">{{article.title}}</span>{{/link-to}}
           <span class="uploader">{{article.userName}}</span>
           <span class="domain">{{domain article.url}}</span>
           <div class="excerpt">{{article.excerpt}}</div>
@@ -30,4 +30,12 @@
     </div>
 
   
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="article">
+{{#link-to 'articles'}}Back{{/link-to}}
+<h2>{{title}}</h2>
+<h2>{{domain url}}<small>{{moment createdAt}}</small></h2>
+<div>{{excerpt}}</div>
 </script>
