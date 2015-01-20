@@ -5,6 +5,14 @@ window.ArticlesFeed = Ember.Application.create
 
 
 
+ArticlesFeed.ArticleSerializer = DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
+  attrs: {
+    comments: { embedded: 'always' }
+  }
+});
+
+
+
 Ember.Handlebars.helper 'domain', (value, options) ->
 
   escaped = Handlebars.Utils.escapeExpression(value)

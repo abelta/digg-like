@@ -22,6 +22,7 @@
           {{#link-to 'article' article}}<span class="title">{{article.title}}</span>{{/link-to}}
           <span class="uploader">{{article.userName}}</span>
           <span class="domain">{{domain article.url}}</span>
+          <span class="comments_count">{{article.comments.length}}</span>
           <div class="excerpt">{{article.excerpt}}</div>
         </div>
       </article>
@@ -35,7 +36,25 @@
 
 <script type="text/x-handlebars" data-template-name="article">
 {{#link-to 'articles'}}Back{{/link-to}}
-<h2>{{title}}</h2>
-<h2>{{domain url}}<small>{{moment createdAt}}</small></h2>
-<div>{{excerpt}}</div>
+<article class="container">
+  <header>
+    <h1>{{title}}</h1>
+    <h2>{{domain url}}<small>{{moment createdAt}}</small></h2>
+    <span class="comments_counter">{{comments.length}}</span>
+  </header>
+  <div>{{excerpt}}</div>
+  <div class="comments_list">
+    {{#each comment in comments}}
+      <article class="comment_container">
+        <header>
+        <span class="comment_user_name">{{comment.userName}}</span>
+        <span class="comment_created_at">{{moment comment.createdAt}}</span>
+        </header>
+        <div class="comment_content">
+        {{comment.content}}
+        </div>
+      </article>
+    {{/each}}
+  </div>
+</article>
 </script>
