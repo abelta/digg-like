@@ -9,18 +9,38 @@
     }
 
     .domain {
-        color: blue;
+        color: #086685;
     }
 
-    .uploader {
+    .user {
         color: pink;
     }
 
-}
+    .created_at {
+        font-size: smaller;
+        color: grey;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
+    .excerpt {
 
-.articles-list {
+    }
 
-    list-style: none;
-    
+    &.show {
+        
+        margin-top: 60px;
+        margin-bottom: 60px;
+
+        .excerpt {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .vote_box {
+            margin-top: 40px;
+        }
+
+    }
+
 }

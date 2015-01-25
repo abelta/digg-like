@@ -11,6 +11,8 @@ ArticlesFeed.ArticlesController = Ember.ObjectController.extend
       handleError = ->
         new Flash "There's been an error.", 'error'
 
+      console.log 'Articles.vote'
+
       jQuery
         .ajax("/articles/#{article.id}/vote/up", type:'patch', dataType:'json')
         .done( handleSuccess )
@@ -28,6 +30,8 @@ ArticlesFeed.ArticlesController = Ember.ObjectController.extend
 
       handleError = ->
         new Flash "There's been an error.", 'error'
+
+      console.log 'Articles.unvote'
 
       jQuery
         .ajax("/articles/#{article.id}/vote/undo", type:'patch', dataType:'json')

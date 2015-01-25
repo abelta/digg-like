@@ -1,11 +1,4 @@
 
-ArticlesFeed.ApplicationStore = DS.Store.extend
-    
-    adapter: DS.RESTAdapter.extend
-        url: "http://localhost:3000"
-
-
-
 ArticlesFeed.Router.map ->
 
     this.resource 'articles', path: '/'

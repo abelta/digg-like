@@ -18,7 +18,6 @@
 //= require handlebars-v1.3.0
 //= require ember
 //= require ember-data
-//= require ember-data.js.map
 
 //= require moment
 

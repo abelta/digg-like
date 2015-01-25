@@ -8,6 +8,7 @@
     {{#each article in model}}
       
       <article class="row article">
+        
         <div class="three columns">
           <div class="vote_box">
           <span class="vote_count">{{article.voteCount}}</span>
@@ -18,13 +19,15 @@
           {{/if}}
           </div>
         </div>
+
         <div class="nine columns">
           {{#link-to 'article' article}}<span class="title">{{article.title}}</span>{{/link-to}}
-          <span class="uploader">{{article.userName}}</span>
+          <span class="user">{{article.userName}}</span>
           <span class="domain">{{domain article.url}}</span>
           <span class="comments_count">{{article.comments.length}}</span>
           <div class="excerpt">{{article.excerpt}}</div>
         </div>
+
       </article>
       
     {{/each}}
@@ -36,25 +39,45 @@
 
 <script type="text/x-handlebars" data-template-name="article">
 {{#link-to 'articles'}}Back{{/link-to}}
-<article class="container">
-  <header>
-    <h1>{{title}}</h1>
-    <h2>{{domain url}}<small>{{moment createdAt}}</small></h2>
-    <span class="comments_counter">{{comments.length}}</span>
-  </header>
-  <div>{{excerpt}}</div>
-  <div class="comments_list">
+
+  
+  <article class="article show container">
+      <header class="twelve columns">
+        <h1 class="title">{{title}}</h1>
+        <span class="domain">{{domain url}}</span>
+        <small class="created_at">{{moment createdAt}}</small>
+      </header>
+      <div class="row">
+
+        <div class="excerpt nine columns">{{excerpt}}</div>
+
+        <div class="three columns">
+          <div class="vote_box">
+          <span class="vote_count">{{voteCount}}</span>
+          {{#if userVoted}}
+            <a class="vote_button"{{action 'unvote' model}}>Unvote!</a>
+          {{else}}
+            <a class="vote_button"{{action 'vote' model}}>Vote!</a>
+          {{/if}}
+          </div>
+        </div>
+      </div>
+
+  </article>
+
+  <div class="comments_list container">
     {{#each comment in comments}}
-      <article class="comment_container">
-        <header>
-        <span class="comment_user_name">{{comment.userName}}</span>
-        <span class="comment_created_at">{{moment comment.createdAt}}</span>
+      <div class="comment twelve columns">
+        <header class="twelve columns">
+        <span class="user_name">{{comment.userName}}</span>
+        <span class="created_at">{{moment comment.createdAt}}</span>
         </header>
-        <div class="comment_content">
+        <div class="content twelve columns">
         {{comment.content}}
         </div>
-      </article>
+      </div>
     {{/each}}
   </div>
-</article>
+
+
 </script>

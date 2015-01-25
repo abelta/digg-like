@@ -5,6 +5,13 @@ window.ArticlesFeed = Ember.Application.create
 
 
 
+ArticlesFeed.ApplicationStore = DS.Store.extend
+    
+    adapter: DS.RESTAdapter.extend
+        url: "http://localhost:3000"
+
+
+
 ArticlesFeed.ArticleSerializer = DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
     comments: { embedded: 'always' }
