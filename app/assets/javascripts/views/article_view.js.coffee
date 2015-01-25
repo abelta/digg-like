@@ -1,5 +1,5 @@
 ArticlesFeed.ArticleView = Ember.View.extend
-  templateName: 'articles'
+  templateName: 'article'
 
   
 ###
