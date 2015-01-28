@@ -1,4 +1,6 @@
+###
 ArticlesFeed.ArticlesController = Ember.ObjectController.extend
+
   
   actions: 
 
@@ -39,3 +41,4 @@ ArticlesFeed.ArticlesController = Ember.ObjectController.extend
         .fail( handleError )
 
       false
+###

@@ -10,14 +10,7 @@
       <article class="row article">
         
         <div class="three columns">
-          <div class="vote_box">
-          <span class="vote_count">{{article.voteCount}}</span>
-          {{#if article.userVoted}}
-            <a class="vote_button"{{action 'unvote' article}}>Unvote!</a>
-          {{else}}
-            <a class="vote_button"{{action 'vote' article}}>Vote!</a>
-          {{/if}}
-          </div>
+          {{render 'vote' article}}
         </div>
 
         <div class="nine columns">
@@ -37,7 +30,24 @@
 </script>
 
 
+
+<script type="text/x-handlebars" data-template-name="vote">
+
+  <div class="vote_box">
+    <span class="vote_count">{{voteCount}}</span>
+    {{#if userVoted}}
+      <a class="vote_button"{{action 'unvote' model}}>Unvote!</a>
+    {{else}}
+      <a class="vote_button"{{action 'vote' model}}>Vote!</a>
+    {{/if}}
+  </div>
+
+</script>
+
+
+
 <script type="text/x-handlebars" data-template-name="article">
+
 {{#link-to 'articles'}}Back{{/link-to}}
 
   
@@ -52,14 +62,9 @@
         <div class="excerpt nine columns">{{excerpt}}</div>
 
         <div class="three columns">
-          <div class="vote_box">
-          <span class="vote_count">{{voteCount}}</span>
-          {{#if userVoted}}
-            <a class="vote_button"{{action 'unvote' model}}>Unvote!</a>
-          {{else}}
-            <a class="vote_button"{{action 'vote' model}}>Vote!</a>
-          {{/if}}
-          </div>
+          
+          {{render 'vote' model}}
+          
         </div>
       </div>
 

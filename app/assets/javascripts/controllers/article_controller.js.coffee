@@ -1,5 +1,8 @@
+
+###
 ArticlesFeed.ArticleController = Ember.ObjectController.extend
-  
+
+
   needs: ['articles']
 
   actions: 
@@ -8,7 +11,7 @@ ArticlesFeed.ArticleController = Ember.ObjectController.extend
 
       console.log 'Article.vote'
       console.log 'article', article
-      console.log this.get('controllers.articles').send('vote', article)
+      #console.log this.get('controllers.articles').send('vote', article)
       #this.needs('articles').call('vote')
       #this.get('controllers.articles').vote(article);
       false
@@ -20,3 +23,4 @@ ArticlesFeed.ArticleController = Ember.ObjectController.extend
       console.log 'Article.unvote'
 
       false
+###
