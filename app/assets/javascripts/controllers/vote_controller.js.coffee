@@ -10,7 +10,7 @@ ArticlesFeed.VoteController = Ember.ObjectController.extend
         console.log 'data', data
         console.log 'article', article
         console.log 'instance', article instanceof ArticlesFeed.Article
-        article.set 'voteCount', data.voteCount
+        article.set 'voteCount', data.article.voteCount
         article.set 'userVoted', true
 
       handleError = ->
@@ -43,8 +43,8 @@ ArticlesFeed.VoteController = Ember.ObjectController.extend
         console.log 'data', data
         console.log 'article', article
         console.log 'instance', article instanceof ArticlesFeed.Article
-        article.set 'voteCount', data.voteCount
-        article.set 'userVoted', true
+        article.set 'voteCount', data.article.voteCount
+        article.set 'userVoted', false
 
       handleError = ->
         new Flash "There's been an error.", 'error'

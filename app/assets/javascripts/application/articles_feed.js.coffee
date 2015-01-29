@@ -20,13 +20,6 @@ ArticlesFeed.ArticleSerializer = DS.RESTSerializer.extend(DS.EmbeddedRecordsMixi
 
 
 
-ArticlesFeed.ArticlesSerializer = DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
-  attrs: {
-    comments: { embedded: 'always' }
-  }
-})
-
-
 ArticlesFeed.ArticleAdapter = DS.RESTAdapter.extend
     #host: 'http://localhost:3000'
     find: (store, type, id)  ->
