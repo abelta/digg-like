@@ -1,3 +1,4 @@
+
 json.articles do
     
     json.array!(@articles) do |article|

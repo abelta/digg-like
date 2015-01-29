@@ -2,7 +2,7 @@
 ArticlesFeed.Router.map ->
 
     this.resource 'articles', path: '/'
-    this.resource 'article', path: '/articles/:id'
+    this.resource 'article', path: '/articles/:slug'
 
 
 
@@ -14,4 +14,4 @@ ArticlesFeed.ArticlesRoute = Ember.Route.extend
 
 ArticlesFeed.ArticleRoute = Ember.Route.extend
     
-    model: (params) -> this.store.find('article', params.id)
+    model: (params) -> this.store.find('article', params.slug)
