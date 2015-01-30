@@ -4,7 +4,7 @@
    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <% @articles.each do |article| %>
       <url>
-          <loc><%= article_path(article, {:only_path => false}) -%></loc>
+          <loc><%= article_ember_path(article) -%></loc>
           <lastmod><%= article.updated_at -%></lastmod>
           <changefreq>daily</changefreq>
           <priority>0.8</priority>
