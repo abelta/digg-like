@@ -13,18 +13,21 @@
     }
 
     .user {
-        color: pink;
+        color: #666666;
     }
 
     .created_at {
         font-size: smaller;
         color: grey;
-        padding-left: 10px;
-        padding-right: 10px;
     }
 
     .excerpt {
 
+    }
+
+    .comments_count {
+        font-size: smaller;
+        color: grey;
     }
 
     &.show {
@@ -39,6 +42,19 @@
 
         .vote_box {
             margin-top: 40px;
+        }
+
+        .created_at {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+    }
+
+    &.index {
+
+        .comments_count {
+            margin-left: 10px;
         }
 
     }

@@ -7,17 +7,24 @@
     <div class="container">
     {{#each article in model}}
       
-      <article class="row article">
+      <article class="row article index">
         
         <div class="three columns">
           {{render 'vote' article}}
         </div>
 
         <div class="nine columns">
-          {{#link-to 'article' article}}<span class="title">{{article.title}}</span>{{/link-to}}
-          <span class="user">{{article.userName}}</span>
-          <span class="domain">{{domain article.url}}</span>
-          <span class="comments_count">{{article.comments.length}}</span>
+          <div class="row">
+            {{#link-to 'article' article}}<span class="title">{{article.title}}</span>{{/link-to}}
+            <span class="domain">{{domain article.url}}</span>
+          </div>
+          <div class="row">
+            <span class="created_at">Uploaded {{moment article.createdAt}}</span>
+          </div>
+          <div class="row">
+            <span class="user">{{article.userName}}</span>
+            <span class="comments_count">{{article.comments.length}} comments</span>
+          </class>
           <div class="excerpt">{{article.excerpt}}</div>
         </div>
 
@@ -55,16 +62,12 @@
       <header class="twelve columns">
         <h1 class="title">{{title}}</h1>
         <span class="domain">{{domain url}}</span>
-        <small class="created_at">{{moment createdAt}}</small>
+        <small class="created_at">Uploaded {{moment createdAt}}</small>
       </header>
       <div class="row">
-
         <div class="excerpt nine columns">{{excerpt}}</div>
-
         <div class="three columns">
-          
           {{render 'vote' model}}
-          
         </div>
       </div>
 
