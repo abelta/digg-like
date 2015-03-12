@@ -33,7 +33,6 @@
     {{/each}}
     </div>
 
-  
 </script>
 
 
@@ -55,8 +54,7 @@
 
 <script type="text/x-handlebars" data-template-name="article">
 
-{{#link-to 'articles'}}Back{{/link-to}}
-
+  {{#link-to 'articles'}}Back{{/link-to}}
   
   <article class="article show container">
       <header class="twelve columns">
@@ -70,8 +68,9 @@
           {{render 'vote' model}}
         </div>
       </div>
-
   </article>
+
+  {{render 'comment_new' model}}
 
   <div class="comments_list container">
     {{#each comment in comments}}
@@ -87,5 +86,20 @@
     {{/each}}
   </div>
 
+</script>
+
+
+
+<script type="text/x-handlebars" data-template-name="comment_new">
+  
+  <div class="container comment_new">
+    <div class="twelve columns comment_new">Post comment</div>
+    <div class="twelve columns">
+      {{textarea value=text class='content'}}
+    </div>
+    <div class="twelve columns">
+      <button {{action 'create' text model}}>Post comment</button>
+    </div>
+  </div>
 
 </script>

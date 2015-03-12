@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @article.save!
-        format.json { render json: @comment, status: :ok }
+        #format.json { render json: @comment, status: :created }
+        format.json { render :show, status: :created }
       else
         format.json { render json: @comment.errors, status: :error }
       end
